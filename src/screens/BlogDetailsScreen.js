@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 
 
 
-function BlogDetails({ route }) {
-  const {id} = route.params;
+function BlogDetails({ route }) { // for passing data between screens
+  const { id } = route.params; // for passing data between screens
   return(
     <View>
       <Text>Blog Details Screen</Text>
