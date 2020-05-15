@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
-
 import { Context as BlogContext } from '../context/BlogContext';
 
 import { Feather } from '@expo/vector-icons'; 
 
 
 
-function IndexScreen() {
+function IndexScreen({ navigation }) {
 
-  const { state, addBlogPost } = useContext(BlogContext);
+  const { state, addBlogPost, deleteBlogPost } = useContext(BlogContext);
   
   return(
     <View>
@@ -18,12 +17,14 @@ function IndexScreen() {
         data={state}
         keyExtractor={( blogPost ) => blogPost.id.toString()}
         renderItem={({ item }) => { return(
-          <View style={styles.blogsView}>
-            <Text>{item.title} (id: {item.id})</Text>
-            <TouchableOpacity onPress={() => console.log(item.id)}>
-              <Feather name="trash" size={24}/>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+            <View style={styles.blogsView}>
+              <Text style={styles.blogTitle}>{item.title} (id: {item.id})</Text>
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <Feather name="trash" size={24} color='#444'/>
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
         )}}
       />
     </View>
@@ -39,6 +40,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderTopWidth: 1,
     borderTopColor: '#aaa'
+  },
+  blogTitle: {
+    fontSize: 16,
+    color: '#333',
   },
 });
 
