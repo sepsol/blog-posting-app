@@ -16,12 +16,12 @@ function IndexScreen() {
       <Button title="Add Blog Post" onPress={addBlogPost}/>
       <FlatList 
         data={state}
-        keyExtractor={( blogPost ) => blogPost.id}
+        keyExtractor={( blogPost ) => blogPost.id.toString()}
         renderItem={({ item }) => { return(
           <View style={styles.blogsView}>
             <Text>{item.title} (id: {item.id})</Text>
-            <TouchableOpacity>
-              <Feather name="trash-2" size={24}/>
+            <TouchableOpacity onPress={() => console.log(item.id)}>
+              <Feather name="trash" size={24}/>
             </TouchableOpacity>
           </View>
         )}}

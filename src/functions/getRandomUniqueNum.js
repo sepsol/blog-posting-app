@@ -9,21 +9,21 @@ export function getRandomNum(min, max) {
 }
 
 
-// create a custom numbers array
-// from desired start to desired end
-export function createNumsArray(start, end) {
-  let numsArray = [];
-  for (let i = start; start <= end; i++) {
-    numsArray.push(i);
+// create a custom numbers array for the range
+// from start of 1 to desired end
+export function createRangeArray(end) {
+  let rangeArray = [];
+  for (let i = 1; i <= end; i++) {
+    rangeArray.push(i);
   }
-  return numsArray;
+  return rangeArray;
 }
 
 
 // outside the number randomizer function below,
 // we run this code the create an array
 // which defines our range of non-repititive nums
-let rangeArray = createNumsArray(1, 100000);
+// let rangeArray = createRangeArray(100000);
 
 
 // this function first checks to see if there are any 
@@ -32,9 +32,9 @@ let rangeArray = createNumsArray(1, 100000);
 // then it'll get the number value of that index and returns it
 // but before that it also removes the used index from the array
 // so that number will never return again
-export default function getRandomUniqueNum() {
+export default function getRandomUniqueNum(rangeArray) {
   if (rangeArray.length === 0) {
-    throw new Error("Error: cannot create any more IDs!");
+    throw new Error("Error: cannot create any more unique numbers!");
   }
   let randomIndex = getRandomNum(0, rangeArray.length - 1);
   let randomNum = rangeArray[randomIndex];
