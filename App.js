@@ -1,7 +1,14 @@
 import React from 'react';
+
 import StackNavigator from './src/navigators/StackNavigator';
+import { Provider as BlogProvider } from './src/context/BlogContext';
 
 
-export default function() {
-  return <StackNavigator/>
-}
+
+export default () => (
+
+  <BlogProvider>
+    <StackNavigator/>
+  </BlogProvider>
+
+)
