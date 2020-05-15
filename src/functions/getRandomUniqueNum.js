@@ -23,7 +23,7 @@ export function createNumsArray(start, end) {
 // outside the number randomizer function below,
 // we run this code the create an array
 // which defines our range of non-repititive nums
-let rangeArray = createNumsArray(1, 10000);
+let rangeArray = createNumsArray(1, 100000);
 
 
 // this function first checks to see if there are any 
@@ -32,7 +32,7 @@ let rangeArray = createNumsArray(1, 10000);
 // then it'll get the number value of that index and returns it
 // but before that it also removes the used index from the array
 // so that number will never return again
-export default function getRandomNumNoRepeat() {
+export default function getRandomUniqueNum() {
   if (rangeArray.length === 0) {
     throw new Error("Error: cannot create any more IDs!");
   }
