@@ -9,7 +9,7 @@ function CreateBlog({ navigation }) {
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const { state, addBlogPost } = useContext(BlogContext);
+  const { addBlogPost } = useContext(BlogContext);
   
   return(
     <View style={styles.container}>
@@ -20,8 +20,7 @@ function CreateBlog({ navigation }) {
       <Button 
         title="Add Blog Post" 
         onPress={() => {
-          navigation.goBack();
-          return addBlogPost(title, content);
+          addBlogPost(title, content, () => navigation.goBack());
         }}
       />
     </View>
