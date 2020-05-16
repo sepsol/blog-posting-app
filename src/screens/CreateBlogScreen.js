@@ -10,7 +10,7 @@ function CreateBlog({ navigation }) {
   
   return (
     <BlogForm 
-      onSubmit={(title, content) => 
+      onSubmit={(title, content) => // read 2nd
         addBlogPost(title, content, () => navigation.goBack())
       }
     />

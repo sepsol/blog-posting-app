@@ -3,10 +3,10 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
 
 
-function BlogPostForm({ onSubmit }) {
+function BlogPostForm({ initialTitle, initialContent, onSubmit }) {
   
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState(initialTitle);
+  const [content, setContent] = useState(initialContent);
 
   return(
     <View style={styles.container}>
@@ -17,11 +17,17 @@ function BlogPostForm({ onSubmit }) {
       <Button 
         title="Save Blog Post" 
         onPress={() => {
-          onSubmit(title, content)
+          onSubmit(title, content) // read 1st
         }}
       />
     </View>
   );
+}
+
+
+BlogPostForm.defaultProps = {
+  initialTitle: '',
+  initialContent: '',
 }
 
 
