@@ -31,7 +31,10 @@ function blogReducer(state, action) {
 //     () => dispatch({ type: 'add_blogpost' })
 //   );
 // }
-const addBlogPost = dispatch => (title, content) => dispatch({ type: 'add_blogpost', payload: { title, content } });
+const addBlogPost = dispatch => (title, content, callback) => {
+  dispatch({ type: 'add_blogpost', payload: { title, content } });
+  callback();
+}
 const deleteBlogPost = dispatch => (id) => dispatch({ type: 'delete_blogpost', payload: id });
 
 

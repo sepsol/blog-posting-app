@@ -8,7 +8,7 @@ import { Feather } from '@expo/vector-icons';
 
 function IndexScreen({ navigation }) {
 
-  const { state, addBlogPost, deleteBlogPost } = useContext(BlogContext);
+  const { state, deleteBlogPost } = useContext(BlogContext);
 
   navigation.setOptions({
     headerRight: () => (
