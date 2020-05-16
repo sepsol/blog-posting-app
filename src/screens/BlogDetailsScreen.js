@@ -8,14 +8,14 @@ import { Context as BlogContext } from '../context/BlogContext';
 
 
 function BlogDetails({ navigation, route }) { // for passing data between screens
-
+  
   const { id } = route.params; // for passing data between screens
   const { state } = useContext(BlogContext);
   const blogPost = state.find((blogPost) => blogPost.id === id);
 
   navigation.setOptions({
     headerRight: () => (
-      <TouchableOpacity style={globalStyles.header} onPress={() => navigation.push('Edit', id)}>
+      <TouchableOpacity style={globalStyles.header} onPress={() => navigation.navigate('Edit', id)}>
         <Feather name="edit-2" size={24} />
       </TouchableOpacity>
     ),

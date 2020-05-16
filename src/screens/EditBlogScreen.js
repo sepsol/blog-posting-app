@@ -16,7 +16,7 @@ function EditBlog({ navigation, route }) {
       initialTitle={blogPost.title}
       initialContent={blogPost.content}
       onSubmit={(title, content) =>
-        editBlogPost(id, title, content, () => navigation.goBack())
+        editBlogPost(id, title, content, () => navigation.pop(1))
       }
     />
   );

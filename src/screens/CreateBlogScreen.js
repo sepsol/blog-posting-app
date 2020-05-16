@@ -11,7 +11,7 @@ function CreateBlog({ navigation }) {
   return (
     <BlogForm 
       onSubmit={(title, content) => // read 2nd
-        addBlogPost(title, content, () => navigation.goBack())
+        addBlogPost(title, content, () => navigation.pop(1))
       }
     />
   );
