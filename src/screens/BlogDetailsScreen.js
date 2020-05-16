@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Context as BlogContext } from '../context/BlogContext';
 
+import globalStyles from '../components/globalStyles';
 import { Feather } from '@expo/vector-icons'; 
+import { Context as BlogContext } from '../context/BlogContext';
 
 
 
@@ -14,8 +15,8 @@ function BlogDetails({ navigation, route }) { // for passing data between screen
 
   navigation.setOptions({
     headerRight: () => (
-      <TouchableOpacity style={{ marginRight: 15 }} onPress={() => console.log('cant touch this B)')}>
-        <Feather name="edit-2" size={26} />
+      <TouchableOpacity style={globalStyles.header} onPress={() => navigation.push('Edit', id)}>
+        <Feather name="edit-2" size={24} />
       </TouchableOpacity>
     ),
   });

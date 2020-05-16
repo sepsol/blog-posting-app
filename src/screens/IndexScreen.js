@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
+
+import globalStyles from '../components/globalStyles';
+import { Feather } from '@expo/vector-icons'; 
 import { Context as BlogContext } from '../context/BlogContext';
 
-import { Feather } from '@expo/vector-icons'; 
 
 
 
@@ -12,7 +14,7 @@ function IndexScreen({ navigation }) {
 
   navigation.setOptions({
     headerRight: () => (
-      <TouchableOpacity style={{ marginRight: 15 }} onPress={() => navigation.navigate('Create')}>
+      <TouchableOpacity style={globalStyles.header} onPress={() => navigation.navigate('Create')}>
         <Feather name="plus" size={28}/>
       </TouchableOpacity>
     ),
