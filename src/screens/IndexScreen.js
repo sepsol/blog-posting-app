@@ -10,19 +10,16 @@ function IndexScreen({ navigation }) {
 
   const { state, addBlogPost, deleteBlogPost } = useContext(BlogContext);
 
-  // React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity style={{ marginRight: 15 }} onPress={() => navigation.navigate('Create')}>
-          <Feather name="plus" size={28}/>
-        </TouchableOpacity>
-      ),
-    });
-  // });
+  navigation.setOptions({
+    headerRight: () => (
+      <TouchableOpacity style={{ marginRight: 15 }} onPress={() => navigation.navigate('Create')}>
+        <Feather name="plus" size={28}/>
+      </TouchableOpacity>
+    ),
+  });
 
   return(
     <View>
-      <Button title="Add Blog Post" onPress={addBlogPost}/>
       <FlatList 
         data={state}
         keyExtractor={( blogPost ) => blogPost.id.toString()}

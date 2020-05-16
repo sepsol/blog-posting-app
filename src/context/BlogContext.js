@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext';
+
 import getRandomUniqueNum, { createRangeArray } from '../functions/getRandomUniqueNum';
 
 
@@ -9,7 +10,14 @@ let idRangeArray = createRangeArray(10000);
 function blogReducer(state, action) {
   switch (action.type) {
     case 'add_blogpost':
-      return [ {id: getRandomUniqueNum(idRangeArray), title: `Blog Post #${state.length + 1}`}, ...state ];
+      return [
+        {
+          id: getRandomUniqueNum(idRangeArray), 
+          title: action.payload.title,
+          content: action.payload.content,
+        },
+        ...state 
+      ];
     case 'delete_blogpost':
       return state.filter((blogPost) => blogPost.id !== action.payload);
     default:
@@ -23,7 +31,7 @@ function blogReducer(state, action) {
 //     () => dispatch({ type: 'add_blogpost' })
 //   );
 // }
-const addBlogPost = dispatch => () => dispatch({ type: 'add_blogpost' });
+const addBlogPost = dispatch => (title, content) => dispatch({ type: 'add_blogpost', payload: { title, content } });
 const deleteBlogPost = dispatch => (id) => dispatch({ type: 'delete_blogpost', payload: id });
 
 

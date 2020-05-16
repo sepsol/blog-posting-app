@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { Context as BlogContext } from '../context/BlogContext';
+
 
 
 
@@ -7,6 +9,7 @@ function CreateBlog({ navigation }) {
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const { state, addBlogPost } = useContext(BlogContext);
   
   return(
     <View style={styles.container}>
@@ -18,6 +21,7 @@ function CreateBlog({ navigation }) {
         title="Add Blog Post" 
         onPress={() => {
           navigation.goBack();
+          return addBlogPost(title, content);
         }}
       />
     </View>

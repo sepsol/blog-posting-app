@@ -14,6 +14,7 @@ function BlogDetails({ route }) { // for passing data between screens
   return(
     <View>
       <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
       <Text>ID: {id}</Text>
     </View>
   );
