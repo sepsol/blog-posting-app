@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
 import globalStyles from '../components/globalStyles';
 import { Feather } from '@expo/vector-icons'; 
@@ -10,7 +10,13 @@ import { Context as BlogContext } from '../context/BlogContext';
 
 function IndexScreen({ navigation }) {
 
-  const { state, deleteBlogPost } = useContext(BlogContext);
+  const { state, getBlogPost, deleteBlogPost } = useContext(BlogContext);
+
+  useEffect(() => {
+      getBlogPost();
+      // const listener = navigation.addListener('focus', e => {getBlogPost()});
+      // return listener;
+    }, []);
 
   navigation.setOptions({
     headerRight: () => (
